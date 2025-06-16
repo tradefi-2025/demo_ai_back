@@ -46,9 +46,9 @@ jobs:
       - name: Build docker image and push
         run: |
           docker build \
-            --build-arg AZURE_DB_URL="${{ secrets.AZURE_DB_URL }}" \
-            --build-arg AZURE_DB_USERNAME="${{ secrets.AZURE_DB_USERNAME }}" \
-            --build-arg AZURE_DB_PASSWORD="${{ secrets.AZURE_DB_PASSWORD }}" \
+            --build-arg AZURE_DB_URL=${{ secrets.AZURE_DB_URL }} \
+            --build-arg AZURE_DB_USERNAME=${{ secrets.AZURE_DB_USERNAME }} \
+            --build-arg AZURE_DB_PASSWORD=${{ secrets.AZURE_DB_PASSWORD }} \
             -t registredemo.azurecr.io/backdemo:latest .
           docker push registredemo.azurecr.io/backdemo:latest
 
