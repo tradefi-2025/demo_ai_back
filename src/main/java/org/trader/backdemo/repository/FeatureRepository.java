@@ -8,7 +8,7 @@ import org.trader.backdemo.entity.FeatureEntity;
 import java.util.List;
 
 @Repository
-public interface FeatureEntityRepository extends JpaRepository<FeatureEntity, Long> {
+public interface FeatureRepository extends JpaRepository<FeatureEntity, Long> {
     @Query("SELECT f FROM FeatureEntity f LEFT JOIN FETCH f.parametreDefinitions")
     List<FeatureEntity> findAllWithParameters();
 }

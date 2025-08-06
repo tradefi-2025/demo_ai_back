@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 import org.trader.backdemo.dto.response.FeatureResponse;
 import org.trader.backdemo.mapper.FeatureEntityMapper;
 import org.trader.backdemo.models.Feature;
-import org.trader.backdemo.repository.FeatureEntityRepository;
+import org.trader.backdemo.repository.FeatureRepository;
 
 
 @RequiredArgsConstructor
 @Service
 public class FeatureService {
 
-    private final FeatureEntityRepository featureEntityRepository;
+    private final FeatureRepository featureEntityRepository;
     private final FeatureEntityMapper featureEntityMapper;
 
     @Transactional(readOnly = true)

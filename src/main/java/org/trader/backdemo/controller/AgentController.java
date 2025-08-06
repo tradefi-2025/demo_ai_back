@@ -1,25 +1,22 @@
 package org.trader.backdemo.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.trader.backdemo.service.FeatureService;
-import org.trader.backdemo.dto.response.*;
+import org.trader.backdemo.dto.request.AgentFormRequest;
 
 @RestController
 
 @CrossOrigin("*")
-@RequestMapping("/api")
+@RequestMapping("/api/agent")
+
 public class AgentController {
 
-    private final FeatureService agentService;
+    /*
+    private final AgentService agentService;
+
+    @PostMapping("/create")
+    public ResponseEntity<Boolean> createAgent(@RequestBody AgentFormRequest newAgentRequest ) {}
 
 
-    public AgentController(FeatureService agentService) {
-        this.agentService = agentService;
-    }
-
-    @GetMapping("/features")
-    public FeatureResponse getFeatures(){
-        return agentService.getFeatures();
-    }
-
+     */
 }
