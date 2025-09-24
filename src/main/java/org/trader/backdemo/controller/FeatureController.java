@@ -5,8 +5,6 @@ import org.trader.backdemo.service.FeatureService;
 import org.trader.backdemo.dto.response.*;
 
 @RestController
-
-@CrossOrigin("*")
 @RequestMapping("/api")
 public class FeatureController {
 

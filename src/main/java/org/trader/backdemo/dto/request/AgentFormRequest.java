@@ -6,9 +6,7 @@ import java.util.Map;
 
 @Data
 public class AgentFormRequest {
-    private String username;
-    private String agentName;
-    private String email;
+    private String name;
     private String targetMarket;
     private String inputStartTime;
     private String inputEndTime;
@@ -17,6 +15,4 @@ public class AgentFormRequest {
     private String outputEndTime;
     private String outputFrequency;
     private Map<String, Map<String, String>> features;
-
-
 }

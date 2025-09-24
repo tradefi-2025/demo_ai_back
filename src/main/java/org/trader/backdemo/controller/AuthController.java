@@ -14,7 +14,6 @@ import org.trader.backdemo.service.UserService;
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
 @RestController
-@CrossOrigin("*")
 
 public class AuthController {
 
