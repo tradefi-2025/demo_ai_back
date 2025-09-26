@@ -1,8 +1,8 @@
 package org.trader.backdemo.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.trader.backdemo.dto.request.UserInscriptionRequest;
@@ -14,13 +14,9 @@ import org.trader.backdemo.service.UserService;
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
 @RestController
-
 public class AuthController {
 
-    @Autowired
     private final UserService userService;
-
-    @Autowired
     private final AuthService authService;
 
     @PostMapping("/inscription")
@@ -30,8 +26,8 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<LogInReponse> login(@RequestBody UserLoginRequest userLoginRequest
-    , HttpServletRequest request){
-        return authService.signIn(userLoginRequest,request);
+    , HttpServletRequest request, HttpServletResponse response){
+        return authService.signIn(userLoginRequest, request, response);
     }
 
     @GetMapping("/auth-check")
