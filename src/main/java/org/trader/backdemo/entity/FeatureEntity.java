@@ -1,13 +1,15 @@
 package org.trader.backdemo.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "feature")
 
 public class FeatureEntity {
@@ -21,5 +23,5 @@ public class FeatureEntity {
     private String description;
 
     @OneToMany(mappedBy = "feature", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<ParametreDefinitionEntity> parametreDefinitions= new HashSet<>();
+    private Set<ParameterDefinitionEntity> parameterDefinitions = new HashSet<>();
 }

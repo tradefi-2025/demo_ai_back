@@ -1,6 +1,5 @@
 package org.trader.backdemo.service.security;
 
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,11 +20,6 @@ public class JpaUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity user = userRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé: " + username));
-
-        return User.withUsername(user.getEmail())
-                .password(user.getPassword())
-                .roles("USER") // rôle par défaut
-                .build();
+        return AppUserPrincipal.from(user);
     }
 }
-

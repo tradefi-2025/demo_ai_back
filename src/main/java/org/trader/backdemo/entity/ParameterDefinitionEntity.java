@@ -10,13 +10,13 @@ import java.util.Set;
 @Entity
 @Setter
 @Getter
-@Table(name = "parametre_definition")
+@Table(name = "parameter_definition")
 
-public class ParametreDefinitionEntity {
+public class ParameterDefinitionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "parametre_definition_id")
+    @Column(name = "parameter_definition_id")
     private Long id;
 
     private String name;
@@ -24,26 +24,23 @@ public class ParametreDefinitionEntity {
     private String defaultValue;
 
     @Enumerated(EnumType.STRING)
-    private ParametreTypeEnum type;
+    private parameterTypeEnum type;
 
     private boolean required;
-    @OneToMany(mappedBy = "parametreDefinition", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "parameterDefinition", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ParameterValueEntity> parameterValues = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "feature_id")
     private FeatureEntity feature;
 
-    public enum ParametreTypeEnum{
+    public enum parameterTypeEnum {
         INTEGER,
         DOUBLE,
         STRING,
         BOOLEAN,
         DATE
     }
-
-
-
 
 
 }

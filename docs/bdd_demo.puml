@@ -16,7 +16,7 @@ class Agent {
   -outputStartTime: DateTime
   -outputEndTime: DateTime
   -outputFrequency: String
-  -ready: boolean
+  -status: Status
   -user: User <<FK>>
 }
 
@@ -41,6 +41,14 @@ enum ParameterType {
   INTEGER
   BOOLEAN
   DATE
+}
+
+enum Status {
+    PENDING,
+    IN_PROGRESS,
+    COMPLETED,
+    FAILED,
+    CANCELLED
 }
 
 class AgentFeature {

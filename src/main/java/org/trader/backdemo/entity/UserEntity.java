@@ -1,13 +1,15 @@
 package org.trader.backdemo.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "app_user")
 
 public class UserEntity {
@@ -24,6 +26,6 @@ public class UserEntity {
 
     private String password;
 
-    @OneToMany(mappedBy = "user" , fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<AgentEntity> agents = new HashSet<>();
 }

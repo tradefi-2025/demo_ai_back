@@ -10,9 +10,9 @@ public class AgentFormRequest {
     private String targetMarket;
     private String inputStartTime;
     private String inputEndTime;
-    private String inputFrequency;
+    private int inputFrequency;
     private String outputStartTime;
     private String outputEndTime;
-    private String outputFrequency;
+    private int outputFrequency;
     private Map<String, Map<String, String>> features;
 }

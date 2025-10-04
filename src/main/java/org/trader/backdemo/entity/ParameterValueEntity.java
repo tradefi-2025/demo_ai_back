@@ -2,10 +2,12 @@ package org.trader.backdemo.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "parameter_value")
 
 public class ParameterValueEntity {
@@ -22,9 +24,8 @@ public class ParameterValueEntity {
     private AgentFeatureEntity agentFeature;
 
     @ManyToOne
-    @JoinColumn(name = "parametre_definition_id")
-    private ParametreDefinitionEntity parametreDefinition;
-
+    @JoinColumn(name = "parameter_definition_id")
+    private ParameterDefinitionEntity parameterDefinition;
 
 
 }
