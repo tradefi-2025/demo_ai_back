@@ -1,7 +1,8 @@
 @startuml
 ' Entités principales
 class User {
-  -email: String <<PK>>
+  -id: Long <<PK>>
+  -email: String <<UNIQUE>>
   -name: String
   -password: String
 }
@@ -10,13 +11,13 @@ class Agent {
   -id: Long <<PK>>
   -name: String
   -targetMarket: String
-  -inputStartTime: DateTime
-  -inputEndTime: DateTime
-  -inputFrequency: int //
-  -outputStartTime: DateTime
-  -outputEndTime: DateTime
-  -outputFrequency: String
-  -status: Status
+  -inputStartTime: String
+  -inputEndTime: String
+  -inputFrequency: int
+  -outputStartTime: String
+  -outputEndTime: String
+  -outputFrequency: int
+  -trainingStatus: Status
   -user: User <<FK>>
 }
 
@@ -30,12 +31,12 @@ class ParameterDefinition {
   -id: Long <<PK>>
   -name: String
   -defaultValue: String
-  -parameterType: ParameterType
+  -type: ParameterTypeEnum
   -required: boolean
   -feature: Feature <<FK>>
 }
 
-enum ParameterType {
+enum ParameterTypeEnum {
   STRING
   NUMBER
   INTEGER
@@ -44,11 +45,11 @@ enum ParameterType {
 }
 
 enum Status {
-    PENDING,
-    IN_PROGRESS,
-    COMPLETED,
-    FAILED,
-    CANCELLED
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+  CANCELLED
 }
 
 class AgentFeature {
@@ -64,9 +65,17 @@ class ParameterValue {
   -parameterDefinition: ParameterDefinition <<FK>>
 }
 
+class Prediction {
+  -id: Long <<PK>>
+  -predictionDate: LocalDate
+  -predictedData: double[][]
+  -agent: Agent <<FK>>
+}
+
 ' Relations entre entités
 User "1" -- "*" Agent : possède >
 Agent "1" -- "*" AgentFeature : configure >
+Agent "1" -- "*" Prediction : génère >
 Feature "1" -- "*" AgentFeature : utilisée dans >
 Feature "1" -- "*" ParameterDefinition : définit >
 AgentFeature "1" -- "*" ParameterValue : contient >

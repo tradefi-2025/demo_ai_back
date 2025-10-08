@@ -11,3 +11,4 @@ import java.util.List;
 public interface AgentRepository extends JpaRepository<AgentEntity, Long> {
     List<AgentEntity> findByUserId(Long userId);
 }
+
