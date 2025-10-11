@@ -13,9 +13,6 @@ RUN mvn clean install
 FROM eclipse-temurin:21-jre-alpine AS deploy
 
 ARG JAR_FILE="/app/target/BackDemo-0.0.1-SNAPSHOT.jar"
-ARG AZURE_DB_URL
-ARG AZURE_DB_USERNAME
-ARG AZURE_DB_PASSWORD
 
 # Définir les variables d'environnement pour l'exécution
 
@@ -27,10 +24,6 @@ COPY --from=build ${JAR_FILE} /opt/app/app.jar
 RUN chmod u+x /opt/app/app.jar
 
 WORKDIR /opt/app
-
-RUN echo SPRING_DATASOURCE_URL=${AZURE_DB_URL} > .env && \
-    echo SPRING_DATASOURCE_USERNAME=${AZURE_DB_USERNAME} >> .env && \
-    echo SPRING_DATASOURCE_PASSWORD=${AZURE_DB_PASSWORD} >> .env
 
 
 EXPOSE 8080
