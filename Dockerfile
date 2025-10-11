@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a parent image
-FROM maven As build
+FROM maven:3.9-eclipse-temurin-23 As build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -10,7 +10,7 @@ RUN mvn clean install
 
 
 
-FROM eclipse-temurin:21-jre-alpine AS deploy
+FROM eclipse-temurin:23-jre-alpine AS deploy
 
 ARG JAR_FILE="/app/target/BackDemo-0.0.1-SNAPSHOT.jar"
 
