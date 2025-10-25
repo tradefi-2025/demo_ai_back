@@ -55,7 +55,7 @@ public class SecurityConfig {
             @Value("${cors.allow-credentials}") boolean allowCredentials
     ) {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList(allowedOrigins.split(",")));
+        config.setAllowedOriginPatterns(Arrays.asList(allowedOrigins.split(",")));
         config.setAllowedMethods(Arrays.asList(allowedMethods.split(",")));
         config.setAllowCredentials(allowCredentials);
         config.setAllowedHeaders(List.of("*"));
