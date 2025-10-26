@@ -49,7 +49,6 @@ public class AuthService {
         UserEntity userObj = foundedUser.get();
 
         HttpSession session = httpRequest.getSession(true);
-        session.setMaxInactiveInterval(3600000);
 
         SessionUser sessionUser = SessionUser.builder()
                 .userId(userObj.getId())
