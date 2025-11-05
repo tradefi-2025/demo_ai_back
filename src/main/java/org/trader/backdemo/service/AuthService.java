@@ -42,15 +42,16 @@ public class AuthService {
         SecurityContext context = SecurityContextHolder.createEmptyContext();
         context.setAuthentication(authentication);
         SecurityContextHolder.setContext(context);
+
+        HttpSession session = httpRequest.getSession(true);
+        httpRequest.changeSessionId();
+        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, context);
         securityContextRepository.saveContext(context, httpRequest, httpResponse);
 
         Optional<UserEntity> foundedUser = userRepository.findByEmail(userLoginRequest.getEmail());
         if (foundedUser.isEmpty())
             throw new BadCredentialsException(userLoginRequest.getEmail() + " - Invalid email");
         UserEntity userObj = foundedUser.get();
-
-        HttpSession session = httpRequest.getSession(true);
-        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, context);
 
         SessionUser sessionUser = SessionUser.builder()
                 .userId(userObj.getId())
