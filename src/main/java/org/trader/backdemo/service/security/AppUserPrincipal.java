@@ -1,12 +1,13 @@
 package org.trader.backdemo.service.security;
 
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.trader.backdemo.entity.UserEntity;
 
 import java.util.Collection;
 import java.util.List;
-
+@Getter
 public class AppUserPrincipal implements UserDetails {
 
     private final Long id;
@@ -36,9 +37,6 @@ public class AppUserPrincipal implements UserDetails {
         this.accountNonLocked = accountNonLocked;
     }
 
-    public Long getId() {
-        return id;
-    }
 
     public static AppUserPrincipal from(UserEntity user) {
         String login = user.getEmail();

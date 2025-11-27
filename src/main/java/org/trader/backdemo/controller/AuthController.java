@@ -1,13 +1,11 @@
 package org.trader.backdemo.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.trader.backdemo.dto.request.UserInscriptionRequest;
 import org.trader.backdemo.dto.request.UserLoginRequest;
-import org.trader.backdemo.dto.response.LogInReponse;
 import org.trader.backdemo.service.AuthService;
 import org.trader.backdemo.service.UserService;
 
@@ -20,23 +18,18 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/inscription")
-    public ResponseEntity<String> inscription(@RequestBody UserInscriptionRequest userInscriptionRequest){
+    public ResponseEntity<String> inscription(@RequestBody UserInscriptionRequest userInscriptionRequest) {
         return userService.inscription(userInscriptionRequest);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LogInReponse> login(@RequestBody UserLoginRequest userLoginRequest
-    , HttpServletRequest request, HttpServletResponse response){
-        return authService.signIn(userLoginRequest, request, response);
+    public ResponseEntity<?> login(@RequestBody UserLoginRequest userLoginRequest) {
+        return authService.signIn(userLoginRequest);
     }
 
-    @GetMapping("/auth-check")
-    public ResponseEntity<Boolean> userLoggedIn(HttpServletRequest request){
-        return authService.authentificaitonCheck(request);
-    }
 
     @PostMapping("logout")
-    public ResponseEntity<String> logOut(HttpServletRequest request){
-        return authService.logOutUser(request);
+    public ResponseEntity<?> logOut() {
+        return authService.logOutUser();
     }
 }

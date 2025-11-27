@@ -4,32 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="861c6d8b-992f-40b7-8823-21fe7088b660" name="Changes" comment="Dockerfile .env">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/config/AuthInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/config/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/controller/FeatureController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/dto/request/AgentFormRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/dto/request/UserInscriptionRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/dto/request/UserLoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/dto/response/LogInReponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/dto/response/SessionInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/dto/session/SessionUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/exception/ControllerActive.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/exception/domaine/ExistingUserException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/interceptor/SessionInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/AuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/UserService.java" afterDir="false" />
+    <list default="true" id="861c6d8b-992f-40b7-8823-21fe7088b660" name="Changes" comment="ignore">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/auth/AuthTokenFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/JwtService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/controller/AgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/controller/AgentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/repository/FeatureEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/repository/FeatureRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/FeatureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/FeatureService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/dto/response/LogInReponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/dto/response/LogInReponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/AppUserPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/AppUserPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/JpaUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/JpaUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-azure.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-azure.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +31,9 @@
       </list>
     </option>
   </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -51,6 +41,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -85,8 +76,8 @@
   </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/hossein-motalebi/demo_ai_back.git&quot;,
-    &quot;accountId&quot;: &quot;5718ff75-7fa6-4dc6-9f07-bb042b27185d&quot;
+    &quot;url&quot;: &quot;https://github.com/tradefi-2025/demo_ai_back.git&quot;,
+    &quot;accountId&quot;: &quot;beb19b5d-f35e-43e3-8b58-1dfda6ff78e0&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -109,29 +100,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.BackDemo [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.BackDemo [install].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;Spring Boot.BackDemoApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;CreateAgentEndPoint&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/hosse/OneDrive - Universite Evry Val d'Essonne/latptop/ima fichier/projet AI/demo_ai_back/BackDemo&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.BackDemo [clean].executor": "Run",
+    "Maven.BackDemo [install].executor": "Run",
+    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "New/updated database configurations found",
+    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "Spring Boot.BackDemoApplication.executor": "Run",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "session-->JWT",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/hosse/OneDrive - Universite Evry Val d'Essonne/latptop/ima fichier/projet AI/demo_ai_back/BackDemo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.trader.backdemo.dto.response" />
@@ -140,18 +137,19 @@
       <recent name="org.trader.backdemo.repository" />
       <recent name="org.trader.backdemo." />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.trader.backdemo" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="BackDemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="local" />
       <envs>
         <env name="spring.datasource.username" value="postgres" />
         <env name="spring.datasource.password" value="password" />
       </envs>
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="BackDemo" />
-      <selectedOptions>
-        <option name="spring.boot.profiles" visible="false" />
-      </selectedOptions>
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.trader.backdemo.BackDemoApplication" />
       <extension name="net.ashald.envfile">
         <option name="IS_ENABLED" value="false" />
@@ -171,8 +169,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26927.53" />
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.26927.53" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28238.7" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28238.7" />
       </set>
     </attachedChunks>
   </component>
@@ -198,6 +196,13 @@
       <workItem from="1752441182388" duration="14480000" />
       <workItem from="1752941523864" duration="17220000" />
       <workItem from="1753478153329" duration="6611000" />
+      <workItem from="1764019630445" duration="21775000" />
+      <workItem from="1764115819100" duration="1464000" />
+      <workItem from="1764178189306" duration="4094000" />
+      <workItem from="1764196622863" duration="276000" />
+      <workItem from="1764196908103" duration="29000" />
+      <workItem from="1764197227040" duration="133000" />
+      <workItem from="1764197368739" duration="5098000" />
     </task>
     <task id="LOCAL-00001" summary="workflow">
       <option name="closed" value="true" />
@@ -272,5 +277,17 @@
     <MESSAGE value="workflow" />
     <MESSAGE value="Dockerfile .env" />
     <option name="LAST_COMMIT_MESSAGE" value="Dockerfile .env" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>

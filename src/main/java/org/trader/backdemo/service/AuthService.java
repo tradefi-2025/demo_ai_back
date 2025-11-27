@@ -1,24 +1,18 @@
 package org.trader.backdemo.service;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
-import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Service;
 import org.trader.backdemo.dto.request.UserLoginRequest;
 import org.trader.backdemo.dto.response.LogInReponse;
-import org.trader.backdemo.dto.session.SessionUser;
 import org.trader.backdemo.entity.UserEntity;
 import org.trader.backdemo.repository.UserRepository;
+import org.trader.backdemo.service.security.JwtService;
 
 import java.util.Optional;
 
@@ -28,59 +22,36 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final AuthenticationManager authenticationManager;
-    private final SecurityContextRepository securityContextRepository;
+    private final JwtService jwtService;
 
-    public ResponseEntity<LogInReponse> signIn(UserLoginRequest userLoginRequest, HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws BadCredentialsException {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        userLoginRequest.getEmail(),
-                        userLoginRequest.getPassword()
-                )
+    public ResponseEntity<?> signIn(UserLoginRequest userLoginRequest) throws BadCredentialsException {
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(userLoginRequest.getEmail(), userLoginRequest.getPassword())
         );
 
-        // Crée et sauvegarde le SecurityContext en session (JSESSIONID)
-        SecurityContext context = SecurityContextHolder.createEmptyContext();
-        context.setAuthentication(authentication);
-        SecurityContextHolder.setContext(context);
-
-        HttpSession session = httpRequest.getSession(true);
-        httpRequest.changeSessionId();
-        session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, context);
-        securityContextRepository.saveContext(context, httpRequest, httpResponse);
 
         Optional<UserEntity> foundedUser = userRepository.findByEmail(userLoginRequest.getEmail());
-        if (foundedUser.isEmpty())
+        if (foundedUser.isEmpty()) {
             throw new BadCredentialsException(userLoginRequest.getEmail() + " - Invalid email");
+        }
         UserEntity userObj = foundedUser.get();
 
-        SessionUser sessionUser = SessionUser.builder()
+        LogInReponse ResponseBody = LogInReponse.builder()
                 .userId(userObj.getId())
-                .email(userObj.getEmail())
                 .name(userObj.getName())
+                .email(userObj.getEmail())
                 .build();
-        session.setAttribute("user", sessionUser);
 
-        return ResponseEntity.ok().body(
-                LogInReponse.builder()
-                        .userId(userObj.getId())
-                        .name(userObj.getName())
-                        .build());
+
+        ResponseCookie responseJwtCookie = jwtService.getResponseCookie(userObj);
+
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, responseJwtCookie.toString()).body(ResponseBody);
+
     }
 
 
-    public ResponseEntity<Boolean> authentificaitonCheck(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session == null)
-            return ResponseEntity.ok(false);
-        SessionUser sessionUser = (SessionUser) session.getAttribute("user");
-        return ResponseEntity.ok(sessionUser != null);
-    }
-
-    public ResponseEntity<String> logOutUser(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null)
-            session.invalidate();
-        SecurityContextHolder.clearContext();
-        return ResponseEntity.ok("User logged out");
+    public ResponseEntity<?> logOutUser() {
+        ResponseCookie cookie = jwtService.getCleanJwtCookie();
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString()).body("Logout successful");
     }
 }
