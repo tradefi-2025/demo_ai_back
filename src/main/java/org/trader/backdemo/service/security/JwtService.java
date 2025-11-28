@@ -23,17 +23,20 @@ public class JwtService {
     private final boolean secure;
     private final int maxAgeSeconds;
     private final String COOKIE_NAME = "accessToken";
+    private final String sameSite;
 
 
     public JwtService(
             @Value("${trader.app.security.jwtSecret}") String jwtSecret,
             @Value("${trader.app.security.jwtExpirationMs:86400000}") Long jwtExpirationMs,
             @Value("${trader.app.cookie.secure:false}") boolean secure,
-            @Value("${trader.app.cookie.maxAgeSeconds:86399}") int maxAgeSeconds) {
+            @Value("${trader.app.cookie.maxAgeSeconds:86399}") int maxAgeSeconds,
+            @Value("${trader.app.cookie.sameSite:Lax}") String sameSite) {
         this.jwtSecret = jwtSecret;
         this.jwtExpirationMs = jwtExpirationMs;
         this.secure = secure;
         this.maxAgeSeconds = maxAgeSeconds;
+        this.sameSite = sameSite;
 
     }
 
@@ -86,6 +89,7 @@ public class JwtService {
                 .secure(secure)
                 .path("/")               // Valide pour tout le site
                 .maxAge(maxAgeSeconds)    // 1 jour (en secondes)
+                .sameSite(sameSite)
                 .build();
     }
 

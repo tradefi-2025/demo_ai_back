@@ -1,5 +1,7 @@
 package org.trader.backdemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +18,7 @@ public class FeatureEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
     private String name;
@@ -23,5 +26,6 @@ public class FeatureEntity {
     private String description;
 
     @OneToMany(mappedBy = "feature", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private Set<ParameterDefinitionEntity> parameterDefinitions = new HashSet<>();
 }

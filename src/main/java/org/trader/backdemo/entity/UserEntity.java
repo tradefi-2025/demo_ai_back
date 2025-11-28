@@ -1,5 +1,7 @@
 package org.trader.backdemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,8 +26,10 @@ public class UserEntity {
 
     private String name;
 
+    @JsonIgnore
     private String password;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<AgentEntity> agents = new HashSet<>();
 }

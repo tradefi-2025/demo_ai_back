@@ -5,18 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="861c6d8b-992f-40b7-8823-21fe7088b660" name="Changes" comment="ignore">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/auth/AuthTokenFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/JwtService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/dto/response/LogInReponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/dto/response/LogInReponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/AppUserPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/AppUserPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/JpaUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/JpaUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/AgentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/AgentEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/AgentFeatureEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/AgentFeatureEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/FeatureEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/FeatureEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/ParameterDefinitionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/ParameterDefinitionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/ParameterValueEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/ParameterValueEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/PredictionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/PredictionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/trader/backdemo/service/security/JwtService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-azure.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-azure.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +91,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -116,7 +119,7 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "Spring Boot.BackDemoApplication.executor": "Run",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "session-->JWT",
+    "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/hosse/OneDrive - Universite Evry Val d'Essonne/latptop/ima fichier/projet AI/demo_ai_back/BackDemo",
@@ -276,7 +279,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="workflow" />
     <MESSAGE value="Dockerfile .env" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dockerfile .env" />
+    <MESSAGE value="JWT implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="JWT implemented" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

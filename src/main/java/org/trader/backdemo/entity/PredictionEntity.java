@@ -1,5 +1,6 @@
 package org.trader.backdemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,7 @@ public class PredictionEntity {
 
     @ManyToOne
     @JoinColumn(name = "agent_id")
+    @JsonIgnore
     private AgentEntity agent;
 
 
