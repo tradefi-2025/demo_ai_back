@@ -10,14 +10,15 @@ class User {
 class Agent {
   -id: Long <<PK>>
   -name: String
-  -targetMarket: String
+  -targetMarket: Markets
   -inputStartTime: String
   -inputEndTime: String
-  -inputFrequency: int
+  -frequency: Frequency
   -outputStartTime: String
   -outputEndTime: String
-  -outputFrequency: int
   -trainingStatus: Status
+  -tradingScale: TradingScale
+  -version : String
   -user: User <<FK>>
 }
 
@@ -52,6 +53,27 @@ enum Status {
   CANCELLED
 }
 
+enum TradingScale {
+  HOURLY
+  DAILY
+  WEEKLY
+  MONTHLY
+}
+
+enum Frequency {
+  MIN_1
+  MIN_5
+  MIN_15
+  MIN_30
+  HOUR_1
+  DAY_1
+  WEEK_1
+}
+
+enum Markets
+{
+    "markerts"
+}
 class AgentFeature {
   -id: Long <<PK>>
   -agent: Agent <<FK>>

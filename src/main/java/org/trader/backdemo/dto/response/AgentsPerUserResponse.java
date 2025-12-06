@@ -16,10 +16,11 @@ public class AgentsPerUserResponse {
     private String targetMarket;
     private String inputStartTime;
     private String inputEndTime;
-    private int inputFrequency;
+    private AgentEntity.Frequency frequency;
     private String outputStartTime;
     private String outputEndTime;
-    private int outputFrequency;
+    private AgentEntity.TradingScale tradingScale;
+    private String version;
     private AgentEntity.Status trainingStatus;
     private Set<AgentFeatureResponse> agentFeatures;
 }

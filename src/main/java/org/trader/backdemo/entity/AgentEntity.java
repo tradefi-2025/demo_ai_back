@@ -31,8 +31,9 @@ public class AgentEntity {
     @Column(name = "input_end_time")
     private String inputEndTime;
 
-    @Column(name = "input_frequency")
-    private int inputFrequency;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "frequency")
+    private Frequency frequency;
 
     @Column(name = "output_start_time")
     private String outputStartTime;
@@ -40,12 +41,16 @@ public class AgentEntity {
     @Column(name = "output_end_time")
     private String outputEndTime;
 
-    @Column(name = "output_frequency")
-    private int outputFrequency;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "training_status")
     private Status trainingStatus = Status.PENDING;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "trading_scale")
+    private TradingScale tradingScale;
+
+    @Column(name = "version")
+    private String version;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -61,6 +66,23 @@ public class AgentEntity {
         COMPLETED,
         FAILED,
         CANCELLED
+    }
+
+    public enum Frequency {
+        MIN_1,
+        MIN_5,
+        MIN_15,
+        MIN_30,
+        HOUR_1,
+        DAY_1,
+        WEEK_1
+    }
+
+    public enum TradingScale {
+        HOURLY,
+        DAILY,
+        WEEKLY,
+        MONTHLY
     }
 
 }
