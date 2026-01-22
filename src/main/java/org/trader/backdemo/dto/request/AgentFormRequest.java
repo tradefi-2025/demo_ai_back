@@ -14,7 +14,7 @@ public class AgentFormRequest {
     private AgentEntity.Frequency frequency;
     private String outputStartTime;
     private String outputEndTime;
-    private AgentEntity.TradingScale tradingScale;
+    private AgentEntity.PredictionScale predictionScale;
     private String version;
     private Map<String, Map<String, String>> features;
 }

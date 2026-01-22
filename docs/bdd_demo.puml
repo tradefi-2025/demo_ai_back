@@ -90,7 +90,8 @@ class ParameterValue {
 class Prediction {
   -id: Long <<PK>>
   -predictionDate: LocalDate
-  -predictedData: double[][]
+  -predictedData: double[]
+  -actualMarket: double[]
   -agent: Agent <<FK>>
 }
 

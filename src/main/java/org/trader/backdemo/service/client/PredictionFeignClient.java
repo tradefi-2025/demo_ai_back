@@ -5,20 +5,21 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.trader.backdemo.dto.external.ExternalPredictionRequest;
+import org.trader.backdemo.dto.external.ExternalPredictionResponse;
 
 @Component
-public class PredictionClient {
+public class PredictionFeignClient {
 
     private final RestTemplate restTemplate;
     private final String predictionUrl;
 
-    public PredictionClient(RestTemplate restTemplate,
-                            @Value("${ms.prediction.url}") String predictionUrl) {
+    public PredictionFeignClient(RestTemplate restTemplate,
+                                 @Value("${ms.prediction.url}") String predictionUrl) {
         this.restTemplate = restTemplate;
         this.predictionUrl = predictionUrl;
     }
 
-    public ResponseEntity<double[][]> predictExternal(ExternalPredictionRequest body) {
+    public ResponseEntity<ExternalPredictionResponse> predictExternal(ExternalPredictionRequest body) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
@@ -28,7 +29,7 @@ public class PredictionClient {
                 predictionUrl,
                 HttpMethod.POST,
                 entity,
-                double[][].class
+                ExternalPredictionResponse.class
         );
     }
 }

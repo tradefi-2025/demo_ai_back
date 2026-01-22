@@ -5,13 +5,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.trader.backdemo.dto.external.ExternalPredictionRequest;
+import org.trader.backdemo.dto.external.ExternalPredictionResponse;
 import org.trader.backdemo.dto.request.PredictionRequest;
 import org.trader.backdemo.dto.response.PredictionResponse;
 import org.trader.backdemo.entity.AgentEntity;
 import org.trader.backdemo.entity.PredictionEntity;
 import org.trader.backdemo.repository.AgentRepository;
 import org.trader.backdemo.repository.PredictionRepository;
-import org.trader.backdemo.service.client.PredictionClient;
+import org.trader.backdemo.service.client.PredictionFeignClient;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
 @Service
 public class PredictionService {
 
-    private final PredictionClient predictionClient;
+    private final PredictionFeignClient predictionFeignClient;
     private final AgentRepository agentRepository;
     private final PredictionRepository predictionRepository;
 
@@ -30,10 +31,14 @@ public class PredictionService {
                 predictionRequest.getPredictionDate()
         );
 
-        ResponseEntity<double[][]> predictionResult = predictionClient.predictExternal(body);
+        ResponseEntity<ExternalPredictionResponse> predictionResult = predictionFeignClient.predictExternal(body);
         if (!predictionResult.getStatusCode().is2xxSuccessful())
             throw new ResponseStatusException(predictionResult.getStatusCode(), "Error from prediction service");
 
+        if (!predictionResult.hasBody()) {
+            throw new ResponseStatusException(predictionResult.getStatusCode(), "the body is null");
+        }
+        ExternalPredictionResponse externalResponse = predictionResult.getBody();
 
         PredictionEntity predictionEntity = new PredictionEntity();
 
@@ -41,7 +46,12 @@ public class PredictionService {
                 .orElseThrow(() -> new ResponseStatusException(org.springframework.http.HttpStatus.NOT_FOUND, "Agent not found"));
         predictionEntity.setAgent(agentEntity);
         predictionEntity.setPredictionDate(predictionRequest.getPredictionDate());
-        predictionEntity.setPredictedData(predictionResult.getBody());
+        if (externalResponse.getPrediction() != null) {
+            predictionEntity.setPredictedData(externalResponse.getPrediction());
+        }
+        if (externalResponse.getActualMarket() != null) {
+            predictionEntity.setActualMarket(externalResponse.getActualMarket());
+        }
 
         long predictionId = predictionRepository.save(predictionEntity).getId();
 
@@ -50,7 +60,8 @@ public class PredictionService {
                 .agentId(agentEntity.getId())
                 .targetMarket(agentEntity.getTargetMarket())
                 .predictionDate(predictionRequest.getPredictionDate())
-                .prediction(predictionResult.getBody())
+                .prediction(externalResponse.getPrediction())
+                .actualMarket(externalResponse.getActualMarket())
                 .build());
 
 
@@ -79,6 +90,7 @@ public class PredictionService {
                         .targetMarket(p.getAgent().getTargetMarket())
                         .predictionDate(p.getPredictionDate())
                         .prediction(p.getPredictedData())
+                        .actualMarket(p.getActualMarket())
                         .build())
                 .toList();
 

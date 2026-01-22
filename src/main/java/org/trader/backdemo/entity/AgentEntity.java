@@ -46,8 +46,8 @@ public class AgentEntity {
     private Status trainingStatus = Status.PENDING;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "trading_scale")
-    private TradingScale tradingScale;
+    @Column(name = "prediction_scale")
+    private PredictionScale predictionScale;
 
     @Column(name = "version")
     private String version;
@@ -78,7 +78,7 @@ public class AgentEntity {
         WEEK_1
     }
 
-    public enum TradingScale {
+    public enum PredictionScale {
         HOURLY,
         DAILY,
         WEEKLY,

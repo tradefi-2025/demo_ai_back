@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -13,6 +13,6 @@ import java.time.LocalDate;
 public class ExternalPredictionRequest {
     private Long agentId;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate predictionDate;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private LocalDateTime predictionDate;
 }

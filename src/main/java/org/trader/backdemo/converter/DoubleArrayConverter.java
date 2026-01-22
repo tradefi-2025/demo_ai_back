@@ -6,11 +6,11 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 @Converter
-public class DoubleArrayConverter implements AttributeConverter<double[][], String> {
+public class DoubleArrayConverter implements AttributeConverter<double[], String> {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     @Override
-    public String convertToDatabaseColumn(double[][] attribute) {
+    public String convertToDatabaseColumn(double[] attribute) {
         if (attribute == null) return null;
         try {
             return mapper.writeValueAsString(attribute);
@@ -20,10 +20,10 @@ public class DoubleArrayConverter implements AttributeConverter<double[][], Stri
     }
 
     @Override
-    public double[][] convertToEntityAttribute(String dbData) {
+    public double[] convertToEntityAttribute(String dbData) {
         if (dbData == null || dbData.isEmpty()) return null;
         try {
-            return mapper.readValue(dbData, double[][].class);
+            return mapper.readValue(dbData, double[].class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

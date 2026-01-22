@@ -17,101 +17,76 @@ VALUES ('Support',
        ('Price Rate of Change (ROC) Indicator',
         'A momentum-based technical indicator that measures the percentage change in price between the current price and the price a certain number of periods ago.');
 
--- Insertion des paramètres pour Support
+-- Support
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'Time Interval', '', 'DOUBLE', true, id
+SELECT 'lookback_period', '20', 'INTEGER', false, id
 FROM feature
 WHERE name = 'Support';
 
--- Insertion des paramètres pour Resistance
+-- Resistance
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'Time Interval', '', 'DOUBLE', true, id
+SELECT 'lookback_period', '20', 'INTEGER', false, id
 FROM feature
 WHERE name = 'Resistance';
 
--- Insertion des paramètres pour Simple Moving Average (SMA)
+-- SMA
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'Time', '', 'DOUBLE', true, id
+SELECT 'period', '', 'INTEGER', true, id
 FROM feature
 WHERE name = 'Simple Moving Average (SMA)';
 
+-- EMA
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'period', '', 'DOUBLE', true, id
-FROM feature
-WHERE name = 'Simple Moving Average (SMA)';
-
--- Insertion des paramètres pour Exponential Moving Average (EMA)
-INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'Time', '', 'DOUBLE', true, id
+SELECT 'period', '', 'INTEGER', true, id
 FROM feature
 WHERE name = 'Exponential Moving Average (EMA)';
 
+-- MACD
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'period', '', 'DOUBLE', true, id
+SELECT 'short_period', '12', 'INTEGER', false, id
 FROM feature
-WHERE name = 'Exponential Moving Average (EMA)';
-
--- Insertion des paramètres pour MACD
+WHERE name = 'MACD (Moving Average Convergence Divergence)';
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'Time', '', 'DOUBLE', true, id
+SELECT 'long_period', '26', 'INTEGER', false, id
 FROM feature
 WHERE name = 'MACD (Moving Average Convergence Divergence)';
 
+-- Bollinger Bands
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'period1', '', 'DOUBLE', true, id
+SELECT 'period', '20', 'INTEGER', false, id
 FROM feature
-WHERE name = 'MACD (Moving Average Convergence Divergence)';
-
+WHERE name = 'Bollinger Bands';
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'period2', '', 'DOUBLE', true, id
+SELECT 'num_std_dev', '2.0', 'DOUBLE', false, id
 FROM feature
-WHERE name = 'MACD (Moving Average Convergence Divergence)';
-
--- Insertion des paramètres pour Bollinger Bands
+WHERE name = 'Bollinger Bands';
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'Time', '', 'DOUBLE', true, id
+SELECT 'band', 'middle', 'STRING', false, id
 FROM feature
 WHERE name = 'Bollinger Bands';
 
+-- RSI
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'period', '', 'DOUBLE', true, id
-FROM feature
-WHERE name = 'Bollinger Bands';
-
-INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'k', '', 'DOUBLE', true, id
-FROM feature
-WHERE name = 'Bollinger Bands';
-
--- Insertion des paramètres pour RSI
-INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'Time', '', 'DOUBLE', true, id
+SELECT 'period', '14', 'INTEGER', false, id
 FROM feature
 WHERE name = 'Relative Strength Index (RSI)';
 
+-- Stochastic Oscillator
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'period', '', 'DOUBLE', true, id
+SELECT 'period', '14', 'INTEGER', false, id
 FROM feature
-WHERE name = 'Relative Strength Index (RSI)';
-
--- Insertion des paramètres pour Stochastic Oscillator
+WHERE name = 'Stochastic Oscillator';
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'Time', '', 'DOUBLE', true, id
+SELECT 'k_smoothing', '3', 'INTEGER', false, id
+FROM feature
+WHERE name = 'Stochastic Oscillator';
+INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
+SELECT 'd_smoothing', '3', 'INTEGER', false, id
 FROM feature
 WHERE name = 'Stochastic Oscillator';
 
+-- ROC
 INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'Period', '', 'DOUBLE', true, id
-FROM feature
-WHERE name = 'Stochastic Oscillator';
-
--- Insertion des paramètres pour Price Rate of Change (ROC)
-INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'Time', '', 'DOUBLE', true, id
-FROM feature
-WHERE name = 'Price Rate of Change (ROC) Indicator';
-
-INSERT INTO parameter_definition (name, default_value, type, required, feature_id)
-SELECT 'Period', '', 'DOUBLE', true, id
+SELECT 'period', '12', 'INTEGER', false, id
 FROM feature
 WHERE name = 'Price Rate of Change (ROC) Indicator';

@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.trader.backdemo.converter.DoubleArrayConverter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -20,11 +20,15 @@ public class PredictionEntity {
     private long id;
 
     @Column(name = "prediction_date")
-    private LocalDate predictionDate;
+    private LocalDateTime predictionDate;
 
     @Column(name = "predicted_data", columnDefinition = "TEXT")
     @Convert(converter = DoubleArrayConverter.class)
-    private double[][] predictedData;
+    private double[] predictedData;
+
+    @Column(name = "actual_market", columnDefinition = "TEXT")
+    @Convert(converter = DoubleArrayConverter.class)
+    private double[] actualMarket;
 
     @ManyToOne
     @JoinColumn(name = "agent_id")

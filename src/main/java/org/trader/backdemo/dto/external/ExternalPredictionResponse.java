@@ -1,0 +1,14 @@
+package org.trader.backdemo.dto.external;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ExternalPredictionResponse {
+    private double[] prediction;
+    private double[] actualMarket;
+}
+
