@@ -27,6 +27,8 @@ public class ParameterDefinitionEntity {
 
     private String defaultValue;
 
+    private String description;
+
     @Enumerated(EnumType.STRING)
     private parameterTypeEnum type;
 
