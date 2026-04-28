@@ -1,6 +1,5 @@
 package org.trader.backdemo.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -22,6 +21,7 @@ public class FeatureEntity {
     @JsonIgnore
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String name;
 
     private String description;

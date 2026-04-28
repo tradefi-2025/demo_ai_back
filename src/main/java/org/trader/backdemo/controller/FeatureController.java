@@ -27,4 +27,9 @@ public class FeatureController {
         return featureService.createFeature(featureCreateRequest);
     }
 
+    @DeleteMapping("/delete/{name}")
+    public ResponseEntity<Void> deleteFeature(@PathVariable String name) {
+        return featureService.deleteFeature(name);
+    }
+
 }

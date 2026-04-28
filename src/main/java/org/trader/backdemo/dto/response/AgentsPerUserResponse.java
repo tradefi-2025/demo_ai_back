@@ -13,13 +13,6 @@ import java.util.Set;
 public class AgentsPerUserResponse {
     private Long id;
     private String name;
-    private String targetMarket;
-    private String inputStartTime;
-    private String inputEndTime;
-    private AgentEntity.Frequency frequency;
-    private String outputStartTime;
-    private String outputEndTime;
-    private AgentEntity.PredictionScale predictionScale;
     private String version;
     private AgentEntity.Status trainingStatus;
     private Set<AgentFeatureResponse> agentFeatures;

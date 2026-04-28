@@ -22,32 +22,9 @@ public class AgentEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "target_market")
-    private String targetMarket;
-
-    @Column(name = "input_start_time")
-    private String inputStartTime;
-
-    @Column(name = "input_end_time")
-    private String inputEndTime;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "frequency")
-    private Frequency frequency;
-
-    @Column(name = "output_start_time")
-    private String outputStartTime;
-
-    @Column(name = "output_end_time")
-    private String outputEndTime;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "training_status")
     private Status trainingStatus = Status.PENDING;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "prediction_scale")
-    private PredictionScale predictionScale;
 
     @Column(name = "version")
     private String version;
@@ -65,24 +42,9 @@ public class AgentEntity {
         IN_PROGRESS,
         COMPLETED,
         FAILED,
-        CANCELLED
-    }
-
-    public enum Frequency {
-        MIN_1,
-        MIN_5,
-        MIN_15,
-        MIN_30,
-        HOUR_1,
-        DAY_1,
-        WEEK_1
-    }
-
-    public enum PredictionScale {
-        HOURLY,
-        DAILY,
-        WEEKLY,
-        MONTHLY
+        CANCELLED,
+        ACTIVE,
+        INACTIVE
     }
 
 }

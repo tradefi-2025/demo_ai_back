@@ -3,6 +3,8 @@ package org.trader.backdemo.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,8 +31,19 @@ public class ParameterDefinitionEntity {
 
     private String description;
 
+    private String minValue;
+
+    private String maxValue;
+
     @Enumerated(EnumType.STRING)
     private parameterTypeEnum type;
+
+    @JdbcTypeCode(SqlTypes.ARRAY)
+    @Column(name = "enum_values", columnDefinition = "text[]")
+    private String[] enumValues;
+
+    @Column(name = "file_name")
+    private String fileName;
 
     private boolean required;
     @OneToMany(mappedBy = "parameterDefinition", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -47,7 +60,9 @@ public class ParameterDefinitionEntity {
         DOUBLE,
         STRING,
         BOOLEAN,
-        DATE
+        DATE,
+        ENUM,
+        FILE
     }
 
 

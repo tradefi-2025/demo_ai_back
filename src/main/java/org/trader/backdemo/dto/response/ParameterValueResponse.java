@@ -13,5 +13,8 @@ public class ParameterValueResponse {
     private String value;
     private String defaultValue;
     private String type;
+    private String description;
+    private String minValue;
+    private String maxValue;
     private boolean required;
 }

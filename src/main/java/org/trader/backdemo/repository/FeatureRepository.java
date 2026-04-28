@@ -17,4 +17,7 @@ public interface FeatureRepository extends JpaRepository<FeatureEntity, Long> {
 
     @Query("SELECT f FROM FeatureEntity f LEFT JOIN FETCH f.parameterDefinitions WHERE f.name = :name")
     Optional<FeatureEntity> findByNameWithParameters(@Param("name") String name);
+
+    @Query("SELECT DISTINCT f FROM FeatureEntity f LEFT JOIN FETCH f.parameterDefinitions WHERE f.name = :name")
+    List<FeatureEntity> findAllByNameWithParameters(@Param("name") String name);
 }
