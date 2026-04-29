@@ -10,21 +10,14 @@ class User {
 class Agent {
   -id: Long <<PK>>
   -name: String
-  -targetMarket: Markets
-  -inputStartTime: String
-  -inputEndTime: String
-  -frequency: Frequency
-  -outputStartTime: String
-  -outputEndTime: String
   -trainingStatus: Status
-  -tradingScale: TradingScale
   -version : String
   -user: User <<FK>>
 }
 
 class Feature {
   -id: Long <<PK>>
-  -name: String
+  -name: String <<UNIQUE>>
   -description: String
 }
 
@@ -32,17 +25,24 @@ class ParameterDefinition {
   -id: Long <<PK>>
   -name: String
   -defaultValue: String
+  -description: String
+  -minValue: String
+  -maxValue: String
   -type: ParameterTypeEnum
+  -enumValues: String[]
+  -fileName: String
   -required: boolean
   -feature: Feature <<FK>>
 }
 
 enum ParameterTypeEnum {
-  STRING
-  NUMBER
   INTEGER
+  DOUBLE
+  STRING
   BOOLEAN
   DATE
+  ENUM
+  FILE
 }
 
 enum Status {
@@ -51,28 +51,8 @@ enum Status {
   COMPLETED
   FAILED
   CANCELLED
-}
-
-enum TradingScale {
-  HOURLY
-  DAILY
-  WEEKLY
-  MONTHLY
-}
-
-enum Frequency {
-  MIN_1
-  MIN_5
-  MIN_15
-  MIN_30
-  HOUR_1
-  DAY_1
-  WEEK_1
-}
-
-enum Markets
-{
-    "markerts"
+  ACTIVE
+  INACTIVE
 }
 class AgentFeature {
   -id: Long <<PK>>
