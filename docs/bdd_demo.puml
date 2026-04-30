@@ -67,18 +67,33 @@ class ParameterValue {
   -parameterDefinition: ParameterDefinition <<FK>>
 }
 
-class Prediction {
+class Signal {
   -id: Long <<PK>>
-  -predictionDate: LocalDate
-  -predictedData: double[]
-  -actualMarket: double[]
+  -signalDate: LocalDateTime
+  -estimatedAction: String
+  -signal: String
+  -probability: Double
+  -probabilities: JSONB
+  -volume: Double
+  -notional: Double
+  -stopLossPrice: Double
+  -riskAmount: Double
+  -sizingMethod: String
+  -warnings: String[]
+  -status: SignalStatus
   -agent: Agent <<FK>>
+}
+
+enum SignalStatus {
+  NEW
+  READ
+  ARCHIVED
 }
 
 ' Relations entre entités
 User "1" -- "*" Agent : possède >
 Agent "1" -- "*" AgentFeature : configure >
-Agent "1" -- "*" Prediction : génère >
+Agent "1" -- "*" Signal : génère >
 Feature "1" -- "*" AgentFeature : utilisée dans >
 Feature "1" -- "*" ParameterDefinition : définit >
 AgentFeature "1" -- "*" ParameterValue : contient >
